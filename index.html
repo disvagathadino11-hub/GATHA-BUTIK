@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butik Agatha</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            height: 100%;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #1e3a5f;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #a8c5e6;
+            font-style: italic;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2c5f8d 0%, #1e3a5f 100%);
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0 0 20px 0;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin: 0 0 40px 0;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ffffff;
+            color: #1e3a5f;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: #e8f1f8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            padding: 80px 40px;
+            background: #ffffff;
+        }
+
+        .features-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #1e3a5f;
+            margin: 0 0 15px 0;
+            font-size: 22px;
+        }
+
+        .feature-card p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .catalog {
+            padding: 80px 40px;
+            background: #ffffff;
+        }
+
+        .catalog-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .catalog h2 {
+            color: #1e3a5f;
+            font-size: 36px;
+            margin: 0 0 50px 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            color: #1e3a5f;
+            font-size: 20px;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+
+        .product-description {
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0 0 15px 0;
+        }
+
+        .product-price {
+            color: #1e3a5f;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 20px 0;
+        }
+
+        .add-to-cart {
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .add-to-cart:hover {
+            background: #2c5f8d;
+            transform: translateY(-2px);
+        }
+
+        .about {
+            padding: 80px 40px;
+            background: #e8f1f8;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            color: #1e3a5f;
+            font-size: 36px;
+            margin: 0 0 30px 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .about p {
+            color: #495057;
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        footer {
+            background: #1e3a5f;
+            color: #a8c5e6;
+            text-align: center;
+            padding: 30px 40px;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .cart-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-button {
+            background: #ffffff;
+            color: #1e3a5f;
+            border: 2px solid #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-button:hover {
+            background: #e8f1f8;
+            transform: translateY(-2px);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #1e3a5f;
+            font-size: 20px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6c757d;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            color: #1e3a5f;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-footer {
+            padding: 20px 25px;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info h4 {
+            margin: 0 0 5px 0;
+            color: #1e3a5f;
+            font-size: 16px;
+        }
+
+        .cart-item-price {
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn:hover {
+            background: #2c5f8d;
+        }
+
+        .remove-item {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .remove-item:hover {
+            background: #c82333;
+        }
+
+        .cart-total {
+            text-align: right;
+            padding: 20px 0;
+            border-top: 2px solid #1e3a5f;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #1e3a5f;
+        }
+
+        .checkout-btn, .confirm-order-btn {
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover, .confirm-order-btn:hover {
+            background: #2c5f8d;
+            transform: translateY(-2px);
+        }
+
+        .clear-cart-btn, .cancel-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clear-cart-btn:hover, .cancel-btn:hover {
+            background: #5a6268;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #1e3a5f;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #1e3a5f;
+        }
+
+        .order-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .order-summary h4 {
+            margin: 0 0 15px 0;
+            color: #1e3a5f;
+        }
+
+        .checkout-total {
+            text-align: right;
+            padding-top: 15px;
+            border-top: 2px solid #1e3a5f;
+            margin-top: 15px;
+            font-size: 18px;
+            color: #1e3a5f;
+        }
+
+        .success-content {
+            text-align: center;
+            padding: 40px 25px;
+        }
+
+        .success-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .success-content h3 {
+            color: #28a745;
+            margin: 0 0 15px 0;
+            font-size: 24px;
+        }
+
+        .success-content p {
+            color: #6c757d;
+            margin: 0 0 30px 0;
+            line-height: 1.6;
+        }
+
+        .ok-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ok-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .features-content {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20px;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XG66Q6Z9VD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XG66Q6Z9VD');
+</script>
+ </head>
+ <body>
+  <div class="container">
+   <header>
+    <div class="header-content">
+     <div>
+      <div class="logo" id="boutique-name">
+       Butik Agatha
+      </div>
+      <div class="tagline" id="tagline">
+       Koleksi Fashion Eksklusif
+      </div>
+     </div>
+     <div class="cart-section"><button class="cart-button" id="cart-button"> 🛒 Keranjang (<span id="cart-count">0</span>) </button>
+     </div>
+    </div>
+   </header>
+   <main>
+    <section class="hero">
+     <div class="hero-content">
+      <h1 id="hero-title">Temukan Gaya Anda</h1>
+      <p id="hero-subtitle">Koleksi eksklusif untuk wanita modern yang percaya diri</p><button class="cta-button" id="cta-button">Lihat Koleksi</button>
+     </div>
+    </section>
+    <section class="features">
+     <div class="features-content">
+      <div class="feature-card">
+       <div class="feature-icon">
+        👗
+       </div>
+       <h3>Koleksi Eksklusif</h3>
+       <p>Desain terbaru dan terpilih untuk penampilan sempurna Anda</p>
+      </div>
+      <div class="feature-card">
+       <div class="feature-icon">
+        ✨
+       </div>
+       <h3>Kualitas Premium</h3>
+       <p>Bahan berkualitas tinggi dengan detail yang sempurna</p>
+      </div>
+      <div class="feature-card">
+       <div class="feature-icon">
+        💎
+       </div>
+       <h3>Gaya Elegan</h3>
+       <p>Sentuhan kemewahan untuk setiap momen spesial</p>
+      </div>
+     </div>
+    </section>
+    <section class="catalog" id="catalog">
+     <div class="catalog-content">
+      <h2 id="catalog-title">Koleksi Terbaru</h2>
+      <div class="products-grid"><!-- Produk 1 -->
+       <div class="product-card">
+        <div class="product-image"><img src="images/baju 1.jpg" alt="Dress Formal Navy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+         <div class="placeholder-image" style="display: none;">
+          <div>
+           📷<br>
+            Ganti dengan URL gambar<br>
+            Dress Formal Navy
+          </div>
+         </div>
+        </div>
+        <div class="product-info">
+         <h3>Dress Formal Navy</h3>
+         <p class="product-description">Dress formal elegan dengan detail bordir halus, sempurna untuk acara resmi dan pesta</p>
+         <div class="product-price">
+          Rp 1.250.000
+         </div><button class="add-to-cart" data-product="Dress Formal Navy" data-price="1250000">Tambah ke Keranjang</button>
+        </div>
+       </div><!-- Produk 2 -->
+       <div class="product-card">
+        <div class="product-image"><img src="images/baju 2.jpg" alt="Dress Cocktail Satin" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+         <div class="placeholder-image" style="display: none;">
+          <div>
+           📷<br>
+            Ganti dengan URL gambar<br>
+            Dress Cocktail Satin
+          </div>
+         </div>
+        </div>
+        <div class="product-info">
+         <h3>Dress Cocktail Satin</h3>
+         <p class="product-description">Dress cocktail berbahan satin premium dengan siluet A-line yang memukau</p>
+         <div class="product-price">
+          Rp 950.000
+         </div><button class="add-to-cart" data-product="Dress Cocktail Satin" data-price="950000">Tambah ke Keranjang</button>
+        </div>
+       </div><!-- Produk 3 -->
+       <div class="product-card">
+        <div class="product-image"><img src="images/baju 3.jpg" alt="Dress Maxi Floral" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+         <div class="placeholder-image" style="display: none;">
+          <div>
+           📷<br>
+            Ganti dengan URL gambar<br>
+            Dress Maxi Floral
+          </div>
+         </div>
+        </div>
+        <div class="product-info">
+         <h3>Dress Maxi Floral</h3>
+         <p class="product-description">Dress maxi dengan motif floral yang anggun, cocok untuk acara outdoor</p>
+         <div class="product-price">
+          Rp 750.000
+         </div><button class="add-to-cart" data-product="Dress Maxi Floral" data-price="750000">Tambah ke Keranjang</button>
+        </div>
+       </div><!-- Produk 4 -->
+       <div class="product-card">
+        <div class="product-image"><img src="images/baju 4.jpg" alt="Dress Mini Chic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+         <div class="placeholder-image" style="display: none;">
+          <div>
+           📷<br>
+            Ganti dengan URL gambar<br>
+            Dress Mini Chic
+          </div>
+         </div>
+        </div>
+        <div class="product-info">
+         <h3>Dress Mini Chic</h3>
+         <p class="product-description">Dress mini dengan desain modern dan chic, perfect untuk acara kasual</p>
+         <div class="product-price">
+          Rp 650.000
+         </div><button class="add-to-cart" data-product="Dress Mini Chic" data-price="650000">Tambah ke Keranjang</button>
+        </div>
+       </div><!-- Produk 5 -->
+       <div class="product-card">
+        <div class="product-image"><img src="images/baju 5.jpg" alt="Dress Midi Vintage" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+         <div class="placeholder-image" style="display: none;">
+          <div>
+           📷<br>
+            Ganti dengan URL gambar<br>
+            Dress Midi Vintage
+          </div>
+         </div>
+        </div>
+        <div class="product-info">
+         <h3>Dress Midi Vintage</h3>
+         <p class="product-description">Dress midi dengan sentuhan vintage yang timeless dan elegan untuk segala usia</p>
+         <div class="product-price">
+          Rp 850.000
+         </div><button class="add-to-cart" data-product="Dress Midi Vintage" data-price="850000">Tambah ke Keranjang</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="about">
+     <div class="about-content">
+      <h2 id="about-title">Tentang Butik Agatha</h2>
+      <p id="about-text">Kami menghadirkan koleksi fashion berkualitas tinggi dengan desain elegan dan modern. Setiap piece dipilih dengan cermat untuk memberikan kepercayaan diri dan kenyamanan maksimal bagi wanita Indonesia.</p>
+     </div>
+    </section>
+   </main>
+   <footer>
+    <p id="footer-text">© 2024 Butik Agatha. Semua hak dilindungi.</p>
+   </footer>
+  </div><!-- Cart Modal -->
+  <div class="modal-overlay" id="cart-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h3>Keranjang Belanja</h3><button class="close-modal" id="close-cart">×</button>
+    </div>
+    <div class="modal-body">
+     <div id="cart-items"></div>
+     <div class="cart-total"><strong>Total: Rp <span id="cart-total">0</span></strong>
+     </div>
+    </div>
+    <div class="modal-footer"><button class="checkout-btn" id="checkout-btn">Checkout</button> <button class="clear-cart-btn" id="clear-cart">Kosongkan Keranjang</button>
+    </div>
+   </div>
+  </div><!-- Checkout Modal -->
+  <div class="modal-overlay" id="checkout-modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h3>Checkout</h3><button class="close-modal" id="close-checkout">×</button>
+    </div>
+    <div class="modal-body">
+     <form id="checkout-form">
+      <div class="form-group"><label for="customer-name">Nama Lengkap:</label> <input type="text" id="customer-name" required>
+      </div>
+      <div class="form-group"><label for="customer-phone">Nomor Telepon:</label> <input type="tel" id="customer-phone" required>
+      </div>
+      <div class="form-group"><label for="customer-address">Alamat Lengkap:</label> <textarea id="customer-address" rows="3" required></textarea>
+      </div>
+      <div class="order-summary">
+       <h4>Ringkasan Pesanan:</h4>
+       <div id="checkout-items"></div>
+       <div class="checkout-total"><strong>Total: Rp <span id="checkout-total">0</span></strong>
+       </div>
+      </div>
+     </form>
+    </div>
+    <div class="modal-footer"><button type="submit" form="checkout-form" class="confirm-order-btn">Konfirmasi Pesanan</button> <button class="cancel-btn" id="cancel-checkout">Batal</button>
+    </div>
+   </div>
+  </div><!-- Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+   <div class="modal-content success-content">
+    <div class="success-icon">
+     ✅
+    </div>
+    <h3>Pesanan Berhasil!</h3>
+    <p>Terima kasih atas pesanan Anda. Kami akan segera menghubungi Anda untuk konfirmasi.</p><button class="ok-btn" id="close-success">OK</button>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            background_color: "#1e3a5f",
+            surface_color: "#e8f1f8",
+            text_color: "#2c3e50",
+            primary_action_color: "#ffffff",
+            secondary_action_color: "#a8c5e6",
+            font_family: "Georgia",
+            font_size: 16,
+            boutique_name: "Butik Agatha",
+            tagline: "Koleksi Fashion Eksklusif",
+            hero_title: "Temukan Gaya Anda",
+            hero_subtitle: "Koleksi eksklusif untuk wanita modern yang percaya diri",
+            cta_button: "Lihat Koleksi",
+            catalog_title: "Koleksi Terbaru",
+            about_title: "Tentang Butik Agatha",
+            about_text: "Kami menghadirkan koleksi fashion berkualitas tinggi dengan desain elegan dan modern. Setiap piece dipilih dengan cermat untuk memberikan kepercayaan diri dan kenyamanan maksimal bagi wanita Indonesia.",
+            footer_text: "© 2024 Butik Agatha. Semua hak dilindungi."
+        };
+
+        async function onConfigChange(config) {
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+            const fontFamily = config.font_family || defaultConfig.font_family;
+            const fontSize = config.font_size || defaultConfig.font_size;
+
+            document.querySelector('header').style.background = backgroundColor;
+            document.querySelector('.hero').style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${backgroundColor}dd 100%)`;
+            document.querySelector('.about').style.background = surfaceColor;
+            document.querySelector('footer').style.background = backgroundColor;
+            
+            document.querySelector('.cta-button').style.background = primaryActionColor;
+            document.querySelector('.cta-button').style.color = backgroundColor;
+            document.querySelector('.tagline').style.color = secondaryActionColor;
+            document.querySelector('footer').style.color = secondaryActionColor;
+
+            document.body.style.color = textColor;
+            document.querySelectorAll('.feature-card h3').forEach(el => el.style.color = backgroundColor);
+            document.querySelectorAll('.about h2').forEach(el => el.style.color = backgroundColor);
+
+            const baseFontStack = 'serif';
+            document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+
+            document.querySelector('.hero h1').style.fontSize = `${fontSize * 3}px`;
+            document.querySelector('.hero p').style.fontSize = `${fontSize * 1.25}px`;
+            document.querySelector('.logo').style.fontSize = `${fontSize * 1.75}px`;
+            document.querySelector('.tagline').style.fontSize = `${fontSize * 0.875}px`;
+            document.querySelector('.cta-button').style.fontSize = `${fontSize}px`;
+            document.querySelectorAll('.feature-card h3').forEach(el => el.style.fontSize = `${fontSize * 1.375}px`);
+            document.querySelectorAll('.feature-card p').forEach(el => el.style.fontSize = `${fontSize}px`);
+            document.querySelector('.about h2').style.fontSize = `${fontSize * 2.25}px`;
+            document.querySelector('.about p').style.fontSize = `${fontSize * 1.125}px`;
+            document.querySelector('footer p').style.fontSize = `${fontSize * 0.875}px`;
+
+            document.getElementById('boutique-name').textContent = config.boutique_name || defaultConfig.boutique_name;
+            document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+            document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+            document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+            document.getElementById('cta-button').textContent = config.cta_button || defaultConfig.cta_button;
+            document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+            document.getElementById('catalog-title').textContent = config.catalog_title || defaultConfig.catalog_title;
+            document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+            document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+            document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            window.elementSdk.setConfig({ background_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            config.surface_color = value;
+                            window.elementSdk.setConfig({ surface_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            window.elementSdk.setConfig({ text_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                        set: (value) => {
+                            config.primary_action_color = value;
+                            window.elementSdk.setConfig({ primary_action_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                        set: (value) => {
+                            config.secondary_action_color = value;
+                            window.elementSdk.setConfig({ secondary_action_color: value });
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        config.font_family = value;
+                        window.elementSdk.setConfig({ font_family: value });
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        config.font_size = value;
+                        window.elementSdk.setConfig({ font_size: value });
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["boutique_name", config.boutique_name || defaultConfig.boutique_name],
+                ["tagline", config.tagline || defaultConfig.tagline],
+                ["hero_title", config.hero_title || defaultConfig.hero_title],
+                ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                ["cta_button", config.cta_button || defaultConfig.cta_button],
+                ["catalog_title", config.catalog_title || defaultConfig.catalog_title],
+                ["about_title", config.about_title || defaultConfig.about_title],
+                ["about_text", config.about_text || defaultConfig.about_text],
+                ["footer_text", config.footer_text || defaultConfig.footer_text]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Shopping cart functionality
+        let cart = [];
+
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+
+        function updateCartTotal() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cart-total').textContent = total.toLocaleString('id-ID');
+            document.getElementById('checkout-total').textContent = total.toLocaleString('id-ID');
+        }
+
+        function addToCart(productName, price) {
+            const existingItem = cart.find(item => item.name === productName);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            updateCartCount();
+            updateCartTotal();
+        }
+
+        function removeFromCart(productName) {
+            cart = cart.filter(item => item.name !== productName);
+            updateCartCount();
+            updateCartTotal();
+            renderCartItems();
+        }
+
+        function updateQuantity(productName, change) {
+            const item = cart.find(item => item.name === productName);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productName);
+                } else {
+                    updateCartCount();
+                    updateCartTotal();
+                    renderCartItems();
+                }
+            }
+        }
+
+        function renderCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const checkoutItemsContainer = document.getElementById('checkout-items');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: #6c757d;">Keranjang kosong</p>';
+                checkoutItemsContainer.innerHTML = '';
+                return;
+            }
+
+            const cartHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <div class="cart-item-price">Rp ${item.price.toLocaleString('id-ID')}</div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn" onclick="updateQuantity('${item.name}', -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateQuantity('${item.name}', 1)">+</button>
+                        <button class="remove-item" onclick="removeFromCart('${item.name}')">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+
+            const checkoutHTML = cart.map(item => `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>${item.name} (${item.quantity}x)</span>
+                    <span>Rp ${(item.price * item.quantity).toLocaleString('id-ID')}</span>
+                </div>
+            `).join('');
+
+            cartItemsContainer.innerHTML = cartHTML;
+            checkoutItemsContainer.innerHTML = checkoutHTML;
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartCount();
+            updateCartTotal();
+            renderCartItems();
+        }
+
+        // Event listeners
+        document.getElementById('cta-button').addEventListener('click', function() {
+            document.querySelector('.catalog').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add to cart buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.getAttribute('data-product');
+                const price = parseInt(this.getAttribute('data-price'));
+                addToCart(productName, price);
+                
+                // Visual feedback
+                this.textContent = 'Ditambahkan!';
+                this.style.background = '#28a745';
+                setTimeout(() => {
+                    this.textContent = 'Tambah ke Keranjang';
+                    this.style.background = '#1e3a5f';
+                }, 1000);
+            });
+        });
+
+        // Cart modal
+        document.getElementById('cart-button').addEventListener('click', function() {
+            renderCartItems();
+            document.getElementById('cart-modal').classList.add('active');
+        });
+
+        document.getElementById('close-cart').addEventListener('click', function() {
+            document.getElementById('cart-modal').classList.remove('active');
+        });
+
+        document.getElementById('clear-cart').addEventListener('click', function() {
+            clearCart();
+        });
+
+        // Checkout modal
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            if (cart.length === 0) {
+                return;
+            }
+            document.getElementById('cart-modal').classList.remove('active');
+            document.getElementById('checkout-modal').classList.add('active');
+            renderCartItems();
+        });
+
+        document.getElementById('close-checkout').addEventListener('click', function() {
+            document.getElementById('checkout-modal').classList.remove('active');
+        });
+
+        document.getElementById('cancel-checkout').addEventListener('click', function() {
+            document.getElementById('checkout-modal').classList.remove('active');
+        });
+
+        // Checkout form
+        document.getElementById('checkout-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('customer-phone').value;
+            const address = document.getElementById('customer-address').value;
+            
+            if (name && phone && address && cart.length > 0) {
+                // Close checkout modal
+                document.getElementById('checkout-modal').classList.remove('active');
+                
+                // Show success modal
+                document.getElementById('success-modal').classList.add('active');
+                
+                // Clear cart and form
+                clearCart();
+                document.getElementById('checkout-form').reset();
+            }
+        });
+
+        document.getElementById('close-success').addEventListener('click', function() {
+            document.getElementById('success-modal').classList.remove('active');
+        });
+
+        // Close modals when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9995927c27fc978e',t:'MTc2MjI3NDYyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
